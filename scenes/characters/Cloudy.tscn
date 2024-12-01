@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://kffwefl50vvl"]
+
+[ext_resource type="Texture2D" uid="uid://bp4dekxng0rb5" path="res://arts/characters/cloudy/Cloudy.png" id="1_3geby"]
+[ext_resource type="Script" path="res://scenes/characters/Cloudy.gd" id="1_qkbyy"]
+[ext_resource type="Script" path="res://scripts/comps/Rideable.gd" id="3_22e11"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="4_47a04"]
+[ext_resource type="Script" path="res://scenes/characters/Cloudy_states/descend.gd" id="6_88fg2"]
+[ext_resource type="Script" path="res://scenes/characters/Cloudy_states/hover.gd" id="7_my667"]
+[ext_resource type="Script" path="res://scenes/characters/Cloudy_states/ridden.gd" id="8_2m4ta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to0wr"]
+size = Vector2(335, 44)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mv00k"]
+
+[sub_resource type="Animation" id="Animation_a508s"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_3ujcn"]
+resource_name = "idle_floating"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 58.5), Vector2(2.08165e-12, 68.5), Vector2(2.08165e-12, 74), Vector2(2.08165e-12, 50), Vector2(2.08165e-12, 45), Vector2(0, 58.5)]
+}
+
+[sub_resource type="Animation" id="Animation_smpbt"]
+resource_name = "sprite_floating"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Cloudy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5.88063, -90.8074), Vector2(-5.881, -100), Vector2(-5.881, -80), Vector2(-5.881, -100), Vector2(-5.881, -80), Vector2(-5.88063, -90.8074)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xs566"]
+_data = {
+"RESET": SubResource("Animation_a508s"),
+"idle_floating": SubResource("Animation_3ujcn"),
+"sprite_floating": SubResource("Animation_smpbt")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajyyv"]
+
+[node name="Cloudy" type="CharacterBody2D" node_paths=PackedStringArray("rideable") groups=["cloudy"]]
+z_index = -1
+disable_mode = 1
+collision_layer = 16
+collision_mask = 39
+platform_floor_layers = 4294901760
+script = ExtResource("1_qkbyy")
+rideable = NodePath("Rideable")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_to0wr")
+one_way_collision = true
+
+[node name="Cloudy" type="Sprite2D" parent="CollisionShape2D"]
+clip_children = 2
+texture = ExtResource("1_3geby")
+
+[node name="Progress" type="Sprite2D" parent="CollisionShape2D/Cloudy"]
+modulate = Color(1, 1, 1, 0.305882)
+position = Vector2(-600, -20.193)
+scale = Vector2(600, 361.204)
+texture = SubResource("CanvasTexture_mv00k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xs566")
+}
+autoplay = "sprite_floating"
+
+[node name="Rideable" type="Node" parent="."]
+script = ExtResource("3_22e11")
+
+[node name="Absorb" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Absorb"]
+position = Vector2(2.08165e-12, -70)
+scale = Vector2(32, 10)
+shape = SubResource("CapsuleShape2D_ajyyv")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_47a04")
+start_state = NodePath("hover")
+
+[node name="descend" type="Node" parent="StateMachine"]
+script = ExtResource("6_88fg2")
+
+[node name="hover" type="Node" parent="StateMachine"]
+script = ExtResource("7_my667")
+
+[node name="ridden" type="Node" parent="StateMachine" node_paths=PackedStringArray("rideable")]
+script = ExtResource("8_2m4ta")
+rideable = NodePath("../../Rideable")
+
+[connection signal="body_entered" from="Absorb" to="." method="_on_absorb_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct2oco2r2rhf3"]
+
+[ext_resource type="PackedScene" uid="uid://c7tyqmmkhpanh" path="res://scenes/terrains/BaiguTerrain.tscn" id="2_hjt2g"]
+[ext_resource type="PackedScene" uid="uid://b17a4kbtndjh4" path="res://scenes/enemies/jutu.tscn" id="2_x6svr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fpud"]
+font_size = 90
+
+[node name="JutuTerrain" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("2_hjt2g")]
+script = null
+
+[node name="Jutu" parent="." instance=ExtResource("2_x6svr")]
+position = Vector2(4183, -475)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 746.0
+offset_top = -680.0
+offset_right = 1292.0
+offset_bottom = -338.0
+text = "JUTU T"
+label_settings = SubResource("LabelSettings_6fpud")
+horizontal_alignment = 1
+vertical_alignment = 1

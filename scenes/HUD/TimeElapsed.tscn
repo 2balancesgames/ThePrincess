@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwdmhmxn1pywa"]
+
+[node name="TimeElapsed" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 98.0
+offset_top = 116.0
+offset_right = 138.0
+offset_bottom = 139.0
+text = "Hello"

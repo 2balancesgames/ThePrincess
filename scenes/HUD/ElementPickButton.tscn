@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://gb4seh2q6chr"]
+
+[ext_resource type="Script" path="res://scenes/HUD/ElementPickButton.gd" id="1_icqak"]
+[ext_resource type="Texture2D" uid="uid://bky5un0hrvomh" path="res://scenes/HUD/hidden_frame_blank.png" id="2_wpx8v"]
+[ext_resource type="FontFile" uid="uid://bsb7eeyerl7b4" path="res://arts/fonts/AcademyFilled3D.ttf" id="3_6vaer"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nsgvr"]
+font = ExtResource("3_6vaer")
+font_size = 50
+
+[node name="ElementPickButton" type="TextureButton"]
+script = ExtResource("1_icqak")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wpx8v")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -8.0
+offset_right = 84.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Increase Base Speed"
+label_settings = SubResource("LabelSettings_nsgvr")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

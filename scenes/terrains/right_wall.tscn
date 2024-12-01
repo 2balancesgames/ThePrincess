@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjh1fa2yrbk4d"]
+
+[ext_resource type="Texture2D" uid="uid://cg6pm3v5drisn" path="res://arts/backgrounds/right_wall_back.png" id="1_eu0y3"]
+[ext_resource type="Script" path="res://scenes/terrains/right_wall.gd" id="1_mf2dm"]
+[ext_resource type="Texture2D" uid="uid://lqkos3p1nqbw" path="res://arts/backgrounds/right_wall_front.png" id="2_ub764"]
+[ext_resource type="PackedScene" uid="uid://b5sjux1n2y5gh" path="res://world.tscn" id="4_6f7qj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fth3x"]
+size = Vector2(600, 9000)
+
+[node name="RightWall" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_mf2dm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7716, -1654)
+shape = SubResource("RectangleShape2D_fth3x")
+
+[node name="back" type="Sprite2D" parent="CollisionShape2D"]
+z_index = -99
+position = Vector2(-1768, 2.08165e-12)
+scale = Vector2(30, 30)
+texture = ExtResource("1_eu0y3")
+
+[node name="front" type="Sprite2D" parent="CollisionShape2D"]
+z_index = 1
+position = Vector2(-1768, 2.08165e-12)
+scale = Vector2(30, 30)
+texture = ExtResource("2_ub764")
+
+[node name="World" parent="." instance=ExtResource("4_6f7qj")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

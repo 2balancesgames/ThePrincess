@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://r67uxhekscp1"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_base.gd" id="1_jk6fh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lqr5s"]
+
+[node name="EnemyBase" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_jk6fh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lqr5s")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

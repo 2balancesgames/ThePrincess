@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddv2ewrfhe3qg"]
+
+[ext_resource type="Script" path="res://scenes/HUD/InterScenes.gd" id="1_6eiib"]
+[ext_resource type="PackedScene" uid="uid://gb4seh2q6chr" path="res://scenes/HUD/ElementPickButton.tscn" id="3_nstrr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2mfj"]
+font_size = 48
+outline_size = 2
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="InterScenes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6eiib")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.694118, 1, 1, 0.396078)
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Pick The Strength"
+label_settings = SubResource("LabelSettings_b2mfj")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 10
+
+[node name="ElementPickButton" parent="ColorRect/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("3_nstrr")]
+layout_mode = 2
+
+[node name="L2" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MCWater" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer/L2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer/L2/MCWater"]
+layout_mode = 2
+color = Color(0.243137, 0.262745, 0.968627, 1)
+
+[node name="MCMetal" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer/L2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer/L2/MCMetal"]
+layout_mode = 2
+color = Color(0.941176, 0.854902, 0.517647, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MCLand" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 190
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer/HBoxContainer/MCLand"]
+layout_mode = 2
+color = Color(0.372549, 0.407843, 0.470588, 1)
+
+[node name="MCLife" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 190
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer/HBoxContainer/MCLife"]
+layout_mode = 2
+color = Color(0.105882, 0.968627, 0.607843, 0.541176)

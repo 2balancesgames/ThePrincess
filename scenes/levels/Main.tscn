@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck18qbggjy8qh"]
+
+[ext_resource type="FontFile" uid="uid://bsb7eeyerl7b4" path="res://arts/fonts/AcademyFilled3D.ttf" id="1_0t0lt"]
+[ext_resource type="Script" path="res://scenes/levels/Main.gd" id="1_x2k80"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_323uy"]
+font = ExtResource("1_0t0lt")
+font_size = 100
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2k80")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.768627, 0.72549, 0.980392, 0.435294)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Two World Mountain
+"
+label_settings = SubResource("LabelSettings_323uy")

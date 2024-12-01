@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmxgy68xp026r"]
+
+[ext_resource type="Script" path="res://scenes/terrains/spawners/BaiguSpawner.gd" id="1_4y4g7"]
+[ext_resource type="Texture2D" uid="uid://3bbps5gxhr4a" path="res://arts/spawners/baigupile.png" id="2_j51rd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a81ui"]
+size = Vector2(200, 200)
+
+[node name="BaiguSpawner" type="Node2D"]
+script = ExtResource("1_4y4g7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j51rd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_a81ui")

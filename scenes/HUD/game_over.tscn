@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://hhp1evii0161"]
+
+[ext_resource type="FontFile" uid="uid://bsb7eeyerl7b4" path="res://arts/fonts/AcademyFilled3D.ttf" id="1_jdiix"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0uaj"]
+font = ExtResource("1_jdiix")
+font_size = 64
+font_color = Color(1, 0.286275, 1, 0.631373)
+
+[node name="Gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.32549, 0.596078, 0.211765)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Game over
+时间终了"
+label_settings = SubResource("LabelSettings_f0uaj")
+horizontal_alignment = 1
+vertical_alignment = 1
